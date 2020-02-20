@@ -41,15 +41,13 @@
   <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-     @foreach($articles as $article) 
+     @if($article) 
 
-      <div class="col-md-4">
+      <div>
         <h2>{{$article->title}}</h2>
-        <p>{{$article->description}} </p>
-        <p>{{$article->}} </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <p>{!!$article->text!!} </p>
       </div>
-      @endforeach()
+      @endif
 
 
     </div>
