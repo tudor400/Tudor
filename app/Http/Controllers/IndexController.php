@@ -7,10 +7,6 @@ use App\Article;
 
 class IndexController extends Controller
 {
-	public function show($id){
-	$article=Article::select(['id','title','text'])->where('id',$id)->first();
-	return view('article-content')->with(['td'=>$this->td,'hl'=>$this->hl,'article'=>$article]);
-
     protected $hl;
 	protected $td;
 
@@ -18,15 +14,20 @@ class IndexController extends Controller
 		$this->hl ="Hello, Tudor!";
 		$this->td ="This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.";
 	}
-
-
-	   
-    public function index(){
+	public function index(){
     	
-    	$articles=Article::select(['id','title','desc'])->get();
-    	//dump($articles);
-    	return view('index')->with(['hl'=>$hl,
-    		                        'td'=>$td,
+    	$articles=Article::select(['id','title','description'])->get();
+    	
+    	return view('index')->with(['hl'=>$this->hl,
+    		                        'td'=>$this->td,
     		                        'articles'=>$articles]);
     }
+	
+
+	public function show($id){
+	$article=Article::select(['id','title','text'])->where('id',$id)->first();
+	return view('article-content')->with(['hl'=>$this->hl,'td'=>$this->td,'article'=>$article]);
+
+    
+	}
 }
