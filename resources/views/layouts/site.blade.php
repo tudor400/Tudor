@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Project name</title>
+    <title>Vinzare Telefoane</title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" >
     <link href="{{asset('css/jumbotron.css')}}" rel="stylesheet">
 
@@ -11,7 +11,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container">
         <div class="navbar-header">
-           <a class="navbar-brand" href="#">Project name</a>
+           <a class="navbar-brand" href="#">Vinzare Telefoane</a>
         </div>
         <div class="links">
           <a href="https://laravel.com/docs">Docs</a>
@@ -25,6 +25,18 @@
          </div>
        </div>
     </nav>
+    @if(count($errors)>0)
+
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+
+      </ul>
+
+      @endif
+
     @yield('content')
     <footer class="container">
       <p>&copy; 2020 Company, Inc.</p>
